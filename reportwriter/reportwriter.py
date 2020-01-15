@@ -51,19 +51,31 @@ class ReportWriter:
             self.writeline(val, indent)
 
     def writedicts(self, dicts: Iterable[Dict]):
+        
         dicts_list = list(dicts)
+        assert len(dicts_list) > 0
         self.writecols(dicts_list[0].keys())
         self.writeline()
         for dict_ in dicts_list:
             self.writecols(dict_.values())
             self.writeline()
 
-    @property
-    def value(self):
-        return self.data.getvalue()
 
     def __str__(self):
-        return self.value
+        return self.data.getvalue()
+
+    @property
+    def value(self):
+        return str(self)
 
     def writeto(self, path: Path):
         path.write_text(self.value)
+
+    def clear(self):
+        self.data = StringIO()
+
+    @staticmethod
+    def savedicts(dicts: Iterable[Dict], path: Path):
+        report = ReportWriter()
+        report.writedicts(dicts)
+        report.writeto(path)
