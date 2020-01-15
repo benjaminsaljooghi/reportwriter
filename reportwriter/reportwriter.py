@@ -2,7 +2,7 @@ from typing import Iterable, Dict
 from pathlib import Path
 from io import StringIO
 
-class StringBuilder:
+class ReportWriter:
     data: StringIO
     delim: str
 
@@ -21,13 +21,13 @@ class StringBuilder:
 
     def write(self, val, indent: int = 0):
         val_str = str(val)
-        val_str_indented = val_str.replace(StringBuilder.default_newline, f"{StringBuilder.default_newline}{self.indentation(indent)}")
+        val_str_indented = val_str.replace(ReportWriter.default_newline, f"{ReportWriter.default_newline}{self.indentation(indent)}")
         self.writeindent(indent)
         self.data.write(val_str_indented)
 
     def writeline(self, val="", indent: int = 0):
         self.write(val, indent)
-        self.write(StringBuilder.default_newline)
+        self.write(ReportWriter.default_newline)
 
     def writedelim(self):
         self.write(self.delim)

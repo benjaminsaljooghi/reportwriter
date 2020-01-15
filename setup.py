@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="ReportWriter", # Replace with your own username
-    version="0.0.3",
+    version="0.0.6",
     author="Benjamin Saljooghi",
     author_email="benjamin.saljooghi@gmail.com",
     description="A small class for building strings and writing reports.",
