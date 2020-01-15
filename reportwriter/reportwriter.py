@@ -2,7 +2,7 @@ from typing import Iterable, Dict
 from pathlib import Path
 from io import StringIO
 
-class ReportWriter:
+class StringBuilder:
     data: StringIO
     delim: str
 
@@ -21,13 +21,13 @@ class ReportWriter:
 
     def write(self, val, indent: int = 0):
         val_str = str(val)
-        val_str_indented = val_str.replace(ReportWriter.default_newline, f"{ReportWriter.default_newline}{self.indentation(indent)}")
+        val_str_indented = val_str.replace(StringBuilder.default_newline, f"{StringBuilder.default_newline}{self.indentation(indent)}")
         self.writeindent(indent)
         self.data.write(val_str_indented)
 
     def writeline(self, val="", indent: int = 0):
         self.write(val, indent)
-        self.write(ReportWriter.default_newline)
+        self.write(StringBuilder.default_newline)
 
     def writedelim(self):
         self.write(self.delim)
@@ -37,6 +37,14 @@ class ReportWriter:
         for val in vals:
             self.write(val)
             self.writedelim()
+
+    def writevals(self, *vals, indent: int = 0, newline: bool = True):
+        self.writeindent(indent)
+        for val in list(vals):
+            self.write(val)
+            self.writedelim()
+        if newline:
+            self.writeline()
 
     def writerows(self, vals: Iterable[str], indent: int = 0):
         for val in vals:
