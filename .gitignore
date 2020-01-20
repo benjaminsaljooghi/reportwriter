@@ -1,3 +1,4 @@
 build
 dist
 ReportWriter.egg-info/*
+**/.mypy_cache
