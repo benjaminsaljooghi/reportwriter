@@ -1,1 +1,0 @@
-A small class for building strings and writing reports.
