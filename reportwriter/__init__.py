@@ -68,8 +68,8 @@ class ReportWriter:
     def value(self):
         return str(self)
 
-    def writeto(self, path: Path):
-        path.write_text(self.value)
+    def writeto(self, *pathargs):
+        Path(*pathargs).write_text(self.value)
 
     def clear(self):
         self.data = StringIO()

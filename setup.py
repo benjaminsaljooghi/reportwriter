@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setup(
     name="ReportWriter", # Replace with your own username
-    version="0.0.9",
+    version="0.0.11",
     author="Benjamin Saljooghi",
     author_email="benjamin.saljooghi@gmail.com",
-    description="A small class for building strings and writing reports.",
+    description="A small class for building complex strings.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/benjaminsaljooghi/reportwriter",
